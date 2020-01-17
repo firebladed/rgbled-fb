@@ -35,7 +35,8 @@
 			fb2: fb@0 {
 				reg = <0>;
 				status = "okay";
-
+				#address-cells = <1>;
+				#size-cells = <0>;
 				compatible = "shiji-led,apa102";
 				/* spi speed needs to be 3 x the 800kHz pixel rate of the ws2812b */
 				spi-max-frequency = <2400000>;
