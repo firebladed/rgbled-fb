@@ -110,6 +110,13 @@ struct rgbled_panel_info apa102_panels[] = {
 		.height		= 1,
 		.pitch		= 144,
 		.flags		= RGBLED_FLAG_CHANGE_WHL,
+	},	
+	{
+		.compatible	= "seeed,respeaker,4",
+		.width		= 1,
+		.height		= 1,
+		.pitch		= 12,
+		.flags		= RGBLED_FLAG_CHANGE_WHL,
 	},
 	{ }
 };
