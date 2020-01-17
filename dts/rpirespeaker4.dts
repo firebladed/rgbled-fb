@@ -32,26 +32,26 @@
                         /* needed to avoid dtc warning */
                         #address-cells = <1>;
                         #size-cells = <0>;
-						fb2: fb@0 {
-							reg = <0>;
-							status = "okay";
+			fb2: fb@0 {
+				reg = <0>;
+				status = "okay";
 
-							compatible = "shiji-led,apa102";
-							/* spi speed needs to be 3 x the 800kHz pixel rate of the ws2812b */
-							spi-max-frequency = <2400000>;
-							/* limit current for the whole panel to 4A
-							 * - depending on power supply */
-							current-limit = <4000>;
-							/*
-							 * define the panels
-							 * note that if they overlap they will produce identical content
-							 * for the defined portion
-							 */
-							panel@0 {
-								reg = <0>;
-								compatible = "seeed,respeaker,4";
-							};
-						};
+				compatible = "shiji-led,apa102";
+				/* spi speed needs to be 3 x the 800kHz pixel rate of the ws2812b */
+				spi-max-frequency = <2400000>;
+				/* limit current for the whole panel to 4A
+				 * - depending on power supply */
+				current-limit = <4000>;
+				/*
+				 * define the panels
+				 * note that if they overlap they will produce identical content
+				 * for the defined portion
+				 */
+				panel@0 {
+					reg = <0>;
+					compatible = "seeed,respeaker,4";
+				};
+			};
                 };
         };
 };
