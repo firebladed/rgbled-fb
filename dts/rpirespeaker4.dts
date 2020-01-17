@@ -1,0 +1,57 @@
+/dts-v1/;
+/plugin/;
+
+
+/ {
+        compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709";
+
+        fragment@0 {
+                target = <&spi0>;
+                __overlay__ {
+                        status = "okay";
+                };
+        };
+
+        fragment@1 {
+                target = <&spidev0>;
+                __overlay__ {
+                        status = "disabled";
+                };
+        };
+
+        fragment@2 {
+                target = <&spidev1>;
+                __overlay__ {
+                        status = "disabled";
+                };
+        };
+
+        fragment@3 {
+                target = <&spi0>;
+                frag1: __overlay__ {
+                        /* needed to avoid dtc warning */
+                        #address-cells = <1>;
+                        #size-cells = <0>;
+						fb2: fb@0 {
+							reg = <0>;
+							status = "okay";
+
+							compatible = "worldsemi,apa102";
+							/* spi speed needs to be 3 x the 800kHz pixel rate of the ws2812b */
+							spi-max-frequency = <2400000>;
+							/* limit current for the whole panel to 4A
+							 * - depending on power supply */
+							current-limit = <4000>;
+							/*
+							 * define the panels
+							 * note that if they overlap they will produce identical content
+							 * for the defined portion
+							 */
+							panel@0 {
+								reg = <0>;
+								compatible = "respeaker,apa102,strip,12";
+							};
+						};
+                };
+        };
+};
